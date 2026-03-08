@@ -10,7 +10,7 @@
   "theme_color": "#ffffff",
   "icons": [
     {
-      "src": "/favicon/web-app-manifest-192x192.png",
+      "src": "/appstore-images/android/launchericon-192x192.png",
       "type": "image",
       "isSquare": false,
       "isPng": false,
