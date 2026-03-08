@@ -10,7 +10,7 @@
   "theme_color": "#ffffff",
   "icons": [
     {
-      "src": "/appstore-images/android/launchericon-192x192.png",
+      "src": "/Alfath-Alsolimany/appstore-images/android/launchericon-192x192.png",
       "type": "png",
       "isSquare": false,
       "isPng": false,
