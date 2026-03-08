@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ar">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="upgrade-insecure-requests"
+    />
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <!-- Favicon -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.rtlcss.com/bootstrap/v4.5.3/css/bootstrap.min.css"
+      integrity="sha384-JvExCACAZcHNJEc7156QaHXTnQL3hQBixvj5RV5buE7vgnNEzzskDtx9NQ4p6BJe"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/icons.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/globle.css" />
+    <link rel="stylesheet" href="css/themes.css" />
+    <link rel="stylesheet" href="css/pages.css" />
+    <link rel="stylesheet" href="css/calender.css" />
+    <title>الفتح السليماني الطيبي</title>
+  </head>
+  <!--Start of Tawk.to Script-->
+  <script type="text/javascript">
+    var Tawk_API = Tawk_API || {},
+      Tawk_LoadStart = new Date();
+    (function () {
+      var s1 = document.createElement("script"),
+        s0 = document.getElementsByTagName("script")[0];
+      s1.async = true;
+      s1.src = "https://embed.tawk.to/65ab51930ff6374032c29c54/1hkijdahj";
+      s1.charset = "UTF-8";
+      s1.setAttribute("crossorigin", "*");
+      s0.parentNode.insertBefore(s1, s0);
+    })();
+  </script>
+  <!--End of Tawk.to Script-->
+  <body data-theme_bg="green">
+    <!-- تغيير التاريخ الهجري -->
+    <!-- 
+    في data-action
+    لو هتنقص اكتب كلمة ناقص
+    لو هتزود اكتب كلمة زيادة
+
+    data-countofdays="عدد الايام"
+  -->
+    <input
+      type="hidden"
+      id="changeHijriDate"
+      data-action=""
+      data-countofdays="1"
+    />
+    <!-- تغيير التاريخ الهجري -->
+    <nav class="navbar navbar-dark bg-primary">
+      <div class="container mini-container d-flex">
+        <a class="navbar-brand" href="/">الفتح السليماني الطيبي</a>
+
+        <a
+          href="/calender.html"
+          data-title="أذهب الي التقويم"
+          class="custom_tooltip calender-icon btn d-flex align-items-center"
+          style="margin-right: auto !important"
+        >
+          <i class="gg-calendar"></i>
+        </a>
+        <!-- Themes -->
+        <div id="theme">
+          <button
+            id="changeTheme"
+            data-title="تغيير الثيم"
+            class="btn custom_tooltip"
+          >
+            <i class="gg-color-picker"></i>
+          </button>
+          <div class="themes hide"></div>
+        </div>
+        <!-- Themes -->
+        <button
+          id="autoLocation"
+          data-title="تحديد الموقع تلقائيا"
+          class="custom_tooltip btn d-flex align-items-center"
+        >
+          <span class="location-icon"></span>
+        </button>
+        <button
+          id="chooseLocation"
+          data-title="اختيار الموقع يدويا"
+          class="custom_tooltip btn d-flex align-items-center"
+        >
+          <i class="gg-track"></i>
+        </button>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#collapsibleNavId"
+          aria-controls="collapsibleNavId"
+          aria-expanded="false"
+          data-title="القائمة"
+          class="custom_tooltip"
+          aria-label="Toggle navigation"
+        >
+          <i class="gg-menu"></i>
+        </button>
+
+        <div class="collapse" id="collapsibleNavId">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0"></ul>
+        </div>
+      </div>
+    </nav>
+    <div class="main-container mini-container container p-4">
+      <div class="country-info">
+        <ul class="nav nav-list" id="nav-tab" role="tablist">
+          <li class="nav-list-item nav-link">
+            <div class="d-flex"><i class="gg-calendar-today"></i>اليوم</div>
+            <span id="displayDay" class="skelton"></span>
+          </li>
+          <li class="nav-list-item nav-link">
+            <div class="calendar position-relative d-flex">
+              <span class="arrow" id="prevDay">
+                <i class="gg-chevron-double-right"></i>
+              </span>
+              <div id="fatimitCalender" class="position-relative d-flex">
+                <div class="calender-picker close-calender">
+                  <div class="calender-picker-backdrop"></div>
+                  <div
+                    class="calender-page-controls d-flex align-items-center justify-content-between"
+                  >
+                    <span id="goPrev">
+                      <i class="gg-chevron-right"></i>
+                    </span>
+                    <div class="d-flex flex-column">
+                      <p id="theDate">أغسطس 2022</p>
+                      <button
+                        type="button"
+                        class="btn text-primary p-0 mx-1"
+                        id="today"
+                      >
+                        اليوم
+                      </button>
+                    </div>
+                    <span id="goNext">
+                      <i class="gg-chevron-right __left"></i>
+                    </span>
+                  </div>
+                  <div class="calender-list">
+                    <div class="calender-list-grid-head">
+                      <span>الأحد</span>
+                      <span>الأثنين</span>
+                      <span>الثلاثاء</span>
+                      <span>الأربعاء</span>
+                      <span>الخميس</span>
+                      <span>الجمعة</span>
+                      <span>السبت</span>
+                    </div>
+                    <div class="calender-list-grid-body"></div>
+                  </div>
+                  <div
+                    class="calender-page-controls d-flex align-items-center justify-content-between"
+                  >
+                    <div class="change-by-year d-flex align-items-center">
+                      <input
+                        type="text"
+                        oninput="this.value=this.value.replace(/[^0-9]/g,'');"
+                        class="form-control"
+                        id="changeByYear"
+                        placeholder="أدخل السنة"
+                      />
+                      <button
+                        type="button"
+                        id="btnChangeByYear"
+                        class="btn btn-primary mx-2"
+                      >
+                        أذهب
+                      </button>
+                      <span class="btn btn-danger" id="closeCalender">x</span>
+                    </div>
+                  </div>
+                </div>
+                <input id="dateChecker" type="text" readonly />
+                <i class="gg-calendar"></i>التاريخ
+              </div>
+              <span class="arrow" id="nextDay">
+                <i class="gg-chevron-double-right"></i>
+              </span>
+            </div>
+            <div class="d-flex">
+              <span id="displayDateHigry" class="skelton"></span>
+              <button class="btn btn-sm btn-danger" id="backToDate">
+                اليوم
+              </button>
+              <span id="displayDate" class="skelton"></span>
+            </div>
+          </li>
+          <li class="nav-list-item nav-link">
+            <div class="d-flex"><i class="gg-time"></i>الوقت الحالي</div>
+            <span id="timeWatch" class="skelton"></span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Tabs  -->
+      <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          <a
+            class="nav-item nav-link"
+            id="nav-darken"
+            data-toggle="tab"
+            href="#nav-darken-tab"
+            role="tab"
+            aria-controls="nav-darken-tab"
+            aria-selected="false"
+            ><span><i class="gg-moon"></i> ساعات الليل </span> <em>52 دقيقة</em>
+          </a>
+
+          <a
+            class="nav-item nav-link active"
+            id="nav-lighten"
+            data-toggle="tab"
+            href="#nav-lighten-tab"
+            role="tab"
+            aria-controls="nav-lighten-tab"
+            aria-selected="true"
+            ><span><i class="gg-sun"></i> ساعات النهار </span> <em>62 دقيقة</em>
+          </a>
+        </div>
+      </nav>
+      <div class="tab-content" id="nav-tabContent">
+        <div
+          class="tab-pane fade darken"
+          id="nav-darken-tab"
+          role="tabpanel"
+          aria-labelledby="nav-darken-tab"
+        >
+          <table class="table">
+            <thead class="thead-light">
+              <tr>
+                <th>بداية الساعة</th>
+                <th>الحالة</th>
+                <th>نهاية الساعة</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="skelton"></span></td>
+                <td><span class="skelton"></span></td>
+                <td><span class="skelton"></span></td>
+              </tr>
+              <tr>
+                <td><span class="skelton"></span></td>
+                <td><span class="skelton"></span></td>
+                <td><span class="skelton"></span></td>
+              </tr>
+              <tr>
+                <td><span class="skelton"></span></td>
+                <td><span class="skelton"></span></td>
+                <td><span class="skelton"></span></td>
+              </tr>
+              <tr>
+                <td><span class="skelton"></span></td>
+                <td><span class="skelton"></span></td>
+                <td><span class="skelton"></span></td>
+              </tr>
+              <tr>
+                <td><span class="skelton"></span></td>
+                <td><span class="skelton"></span></td>
+                <td><span class="skelton"></span></td>
+              </tr>
+              <tr>
+                <td><span class="skelton"></span></td>
+                <td><span class="skelton"></span></td>
+                <td><span class="skelton"></span></td>
+              </tr>
+              <tr>
+                <td><span class="skelton"></span></td>
+                <td><span class="skelton"></span></td>
+                <td><span class="skelton"></span></td>
+              </tr>
+              <tr>
+                <td><span class="skelton"></span></td>
+                <td><span class="skelton"></span></td>
+                <td><span class="skelton"></span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div
+          class="tab-pane fade show lighten active"
+          id="nav-lighten-tab"
+          role="tabpanel"
+          aria-labelledby="nav-lighten-tab"
+        >
+          <table class="table">
+            <thead class="thead-light">
+              <tr>
+                <th>بداية الساعة</th>
+                <th>الحالة</th>
+                <th>نهاية الساعة</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="skelton"></span></td>
+                <td><span class="skelton"></span></td>
+                <td><span class="skelton"></span></td>
+              </tr>
+              <tr>
+                <td><span class="skelton"></span></td>
+                <td><span class="skelton"></span></td>
+                <td><span class="skelton"></span></td>
+              </tr>
+              <tr>
+                <td><span class="skelton"></span></td>
+                <td><span class="skelton"></span></td>
+                <td><span class="skelton"></span></td>
+              </tr>
+              <tr>
+                <td><span class="skelton"></span></td>
+                <td><span class="skelton"></span></td>
+                <td><span class="skelton"></span></td>
+              </tr>
+              <tr>
+                <td><span class="skelton"></span></td>
+                <td><span class="skelton"></span></td>
+                <td><span class="skelton"></span></td>
+              </tr>
+              <tr>
+                <td><span class="skelton"></span></td>
+                <td><span class="skelton"></span></td>
+                <td><span class="skelton"></span></td>
+              </tr>
+              <tr>
+                <td><span class="skelton"></span></td>
+                <td><span class="skelton"></span></td>
+                <td><span class="skelton"></span></td>
+              </tr>
+              <tr>
+                <td><span class="skelton"></span></td>
+                <td><span class="skelton"></span></td>
+                <td><span class="skelton"></span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- Tabs  -->
+      <div id="dateToday"></div>
+      <div class="status d-flex align-items-center justify-content-between">
+        <span data-planet="ex" class="status-ex">سعد اكبر</span>
+        <span data-planet="good" class="status-good">سعد اصغر</span>
+        <span data-planet="normal" class="status-normal">ممتزج</span>
+        <span data-planet="bad" class="status-bad">نحس</span>
+      </div>
+    </div>
+    <div id="planetMessage"></div>
+    <div class="visitors" id="visitors"></div>
+    <footer>
+      <a class="text-white text-bold" href="/"> الفتح السليماني الطيبي </a>
+    </footer>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.rtlcss.com/bootstrap/v4.5.3/js/bootstrap.min.js"
+      integrity="sha384-VmD+lKnI0Y4FPvr6hvZRw6xvdt/QZoNHQ4h5k0RL30aGkR9ylHU56BzrE2UoohWK"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/gh/abdennour/hijri-date@master/cdn/hijri-date-latest.js"
+      type="text/javascript"
+    ></script>
+    <script src="https://unpkg.com/@supabase/supabase-js"></script>
+    <script src="js/global.js" type="module"></script>
+    <script src="js/calender-box.js" type="module"></script>
+    <script src="js/sunrise-time.js" type="module"></script>
+    <script src="js/visitors.js"></script>
+  </body>
+</html>

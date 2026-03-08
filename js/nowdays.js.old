@@ -1,0 +1,563 @@
+import * as Calender from "./calender-setup.js";
+import { calculateDate, resetDate } from "./global.js";
+
+// month , week , ''
+export const priority = "";
+export const homePriority = "month";
+
+// false للاخفاء
+// true للاظهار
+export const priorityWeek = true; // اسبوع
+export const priorityMonth = true; // شهر
+export const priorityStatus = true; // نحس او سعد
+
+export const BADDEST_DAY =
+  "يكره السفر والبيع ولبس الجديد ونكاح النسوان والغرس والزرع وحفر البير وشراء الدار وقرب السلطان";
+
+export const STARTING_YEAR = {
+  0: "إذا دخلت السنة يوم الاحد كان طالعها الشمس ونجمها الأسد فتكون سنة باردة ويكون صيفها صالحاً وتكون سنة ممطرة جيدة رخية ويكون فيها وجع العيون وموت الصبيان وتعسير الحبالى ويهيج فيها حرب عظيم بين الفرس والعجم وتظهر فيها الجراد ويقتل فيها سلطان من العرب وينكسف فيها القمر ويرجع الحجاج سالمين وخريفها جيد وصيفها جيد وأولها خير من آخرها ويكون في البُر والشعير عاهة يكيل كيلاً عظيماً وتكثر فيها الفتنة ثم يصلح الزرع وتكثر البركة فيه وتثمر النخل والأشجار وتكون الكرام مثمرة ويصلح بلاد العرب وتفسد بلاد العجم ويصلح التزويج والبيع والشراء ويكثر النخل والذرة ويصيب العدس والباقل عاهة ويجود الدخن والجوز وتفسد النخل والسدر ويصلح العنب والرمان في كل بلاد ويظهر في الناس الحكاك والجرب ويكثر اللبن في الخريف والله أعلم.",
+  1: "إذا دخلت السنة يوم الاثنين كان طالعها القمر ونجمها السرطان وتكون سنة مائية كثيرة الأثمار والبانها غزير في المشرق والمغرب ولكن فيها حرب عظيم ثمارها كثيرة ويثمر النخل ويصلح المواشي ويكثر الحب والسمن واللحم والشحم وتشتمل الجبال بالخضرة وهي سنة باردة ورياحها كثيرة ويقع في الغنم والضأن هلاك في آخر السنة والبقر تموت وهي سنة شديدة حرّها وبردها وسهل الأرض خير من جبالها ويقع في ظهور الناس وجع ويقع يخطى في الشعير ويصلح البر ويصيب العدس والسمسم والسدر والكراث والتفاح عاهة ويخط الدخن وتكون شحة كثيرة ويصلح الزواج وأن تغلّب الآبق لا يرجع ويصلح الحج ولا بد من الخلاف في العراقين ويخرج العرب من بلاد الى بلاد ويصيب الزرع حمرة وبياض ولا يضره شيء والله أعلم .",
+  2: "إذا دخلت السنة يوم ا لثلاثاء كان طالعها المريخ ونجمها العقرب وتكون سنة سليمة أولها صحة وشدة وآخرها رخاء قليل الفتن بين العرب ويقع الربو في الصبيان والشيوخ من الرجال والنساء ويظهر الجراد ويقع الفتن في البلاد وتقع هزيمة عظيمة وتقع شدة ويظهر ملك يبلغ اليمن ويرجع ويظهر في الشام حرب عظيم ويزول ملكه ويظهر ملك آخر ويبلغ البُر صاعين بدينار ويرخص التوت ويكثر صيد البحر في آخر السنة وتغلو الدراهم والدنانير  ويكثر الماء في الصيف ويكثر الزرع في جميع البلاد ويكثر اللبن في الغنم ويحسن خريفها ويقع النقص في الدخن ويظهر البيع والشراء ويبارك الله فيه والله أعلم .",
+  3: "إذا دخلت السنة يوم الاربعاء فله من البروج السنبلة ومن الكواكب عطارد يدل على كثرة الأوجاع والوباء ويكون الحر قوياً ويحدث بين الناس الشر وتكثر الألبان والعدس والشعير وتصلح الاشجار والثمار في جميع البلاد وتكثر الأمراض من الصفراء وتنبع العيون ويكثر فيها الحرب وتموت فيها الحوامل وتكثر الزنابير ويرتفع السل من كثرة الفواحش ويصلح الكروم وتسمن البهائم ويقع في الإبل الهيام والكلف ويصلح البيع والشراء ويصيب الناس ريح القولنج في قلوبهم ويموت كبار الناس ويصلح الربيع والخريف ويقع في الشام برد وحرة ويقع في الخريف نقص وتخرب في بلاد اليمن مدينة ويشد البرد ويقع في الصيف مطر ويصلح في الجبال البر وفي تهامة الذرة والدخن والسمسم وتهيج النساء على الرجال ويأتي على الناس في آخر السنة رياح كثيرة ويغلو التوت والله أعلم ",
+  4: "إذا دخلت السنة يوم الخميس كان طالعها المشتري وبرجها القوس يدل على كثرة المطر وهي سنة جافة مغلية الاسعار ويقع في البر والزرع عاهة وترمح الأرض وتكون سنة منكوس آخرها خير من أولها ويصلح الشام ويقع في اليمن خطة وتنكشف ويهيج البحر ويكثر المطر في آخر السنة ويصلح الخريف ويكثر الصيد وتكثر الفكرة والندم ويخرج خارجي ويحصل في الأرض زلزلة ويقع في البحار موت والصبيان يموتون من رياح تعرض لهم والله أعلم",
+  5: "إذا دخلت السنة يوم الجمعة كان طالعها الزهرة ولها من البرج الميزان والثور تكون سنة مباركة كثيرة الرياح العواصف وكثيرة المطر ويظهر ملك يدّعي الأمر ويغلو الشعير ويصلح السدر والمواشي وتكثر الألبان وتصلح البهائم والإبل ويقع آية ومشقة شديدة من هذه السنة ويكون المطر في الصيف والخريف غزير ويقع بعض نهب في بعض القرى ويكثر وجع الحلق ووجع الظهر ويظهر الكلْب الكَلِب ويكون في الصيف رياح القتول حتى يعطش الزرع من الشدة ويضعف ثمر النخل والبر ويصلح العنب ويخرص التوت.ويقع في الغنم ويكثر ويقل صيد البحر. والبقر تهزل ويكثر طير الارض ويصيد الناس ويقع في الحجاز خلاف ويكثر القتل والأخذ والنهب وتسقط النساء أولادهن ويعسر الحبالى ويموت منهن كثير وتصلح السنة في آخرها ويقع المطر في آخر السنة وتكثر الالبان والسمسم في آخرها ويظهر في مكة من الشام أمير عظيم وينزل من مدينة النبي عليه السلام ويخرجون عليهم ويُنصَرون ويصيب سكان مكة شدة عظيمة وتكثر الجدري والجراد وآخر السنة خير من أولها ويخشى على مكة من صغار العيون وينكسف أحد النيرين وتكون سنة شديدة ويهلك الملوك ويظهر نجم له ذوابة والله أعلم",
+  6: "إذا دخلت السنة يوم السبت يكون الطالع زحل وبرجها يدل على أنه تكون سنة غير صالحة للمواشي وتهلك الجمال من آفة يصيبها وتكون الرياح كثيرة ويكثر الحرب فيها والنهب ويكثر الجدري ويظهر وجع الحلق ويكثر الطير طير الدوائر ويكثر رياح القتول ويفسد شيئا من ثمر النخل ويكثر العنب ويغلو التوت والسمن واللحم ويهلك أولاد الغنم ويقع في الناس مرارة ونهب ويكثر إسقاط الحبالى ويكثر الطلاق ويكون المطر في أول سنة في العراق ويموت المشايخ والنساء ويكثر السليط ويقع في أرض اليمن اختلاف عظيم ويقبل الرياح ويقع في الحجاز فزع عظيم ويخاف على الحجاج وينكسف أحد النيرين ويكثر الحمى والوباء ويكثر الجراد وتكون سنة عظيمة جافة والله أعلم",
+};
+
+export const EACH_MONTHS_STATUS = {
+  1: "يوم يصلح فيه لقاء الملوك والأمراء",
+  2: "يوم يصلح للبيع والشراء وكل أمر",
+  3: "يوم ردي في كل الأمور والأشغال",
+  4: "يوم صالح لجميع الأشغال والأعمال",
+  5: "يوم ردي جداً لا يبتدئ فيه عمل",
+  6: "يوم صالح لكل أمر وحاجة",
+  7: "يوم صالح لكل الامور والحوائج",
+  8: "يوم صالح لقضاء الحوائج وأخذ القرار",
+  9: "يوم صالح لساير الأعمال",
+  10: "يوم جيد لجميع المهمات",
+  11: "يوم صالح لطلب الحوائج وغيرها",
+  12: "يوم صالح للقاء الملوك والأمراء",
+  13: "يوم مذموم يحذر فيه لقاء الملوك",
+  14: "يوم صالح لكل عمل وحاجة",
+  15: "يوم صالح وقيل ممتزج الحال",
+  16: "يوم ردئ لسائر الأحوال",
+  17: "يوم جيد لكافة الأشغال",
+  18: "يوم جيد لعمل الولائم والأفراح",
+  19: "يوم صالح للمهمات في الأمور",
+  20: "يوم صالح يحمد فيه ساير الأعمال",
+  21: "يوم ممتزج متوسط في أحواله",
+  22: "يوم صالح لقضاء الحوائج",
+  23: "يوم متوسط الحال",
+  24: "يوم ردي لا تبتدئ فيه بأمر",
+  25: "يوم ردي مذموم لساير الأعمال",
+  26: "يوم صالح لساير الأعمال",
+  27: "يوم جيد لإبتداء الاعمال",
+  28: "يوم صالح لساير الاعمال",
+  29: "يوم متوسط الحال",
+  30: "يوم صالح لطلب الحوائج والسفر",
+};
+
+export const AFTER_SAFAR = {
+  0: "اذا كان السادس من صفر يوم الأحد فان تلك السنة شديدة قليلة المطر في الخريف ويهلك فيها الطير ويكون فيها الحمّا وبلال وينال الناس جوع وقلة من الطعام والله أعلم", // الاحد
+  1: "اذا كان السادس من صفر يوم الأثنين فإن تلك السنة يكون فيها خوف ورمد ويكثر العسل وترتفع الأسعار في آخرها ويموت فيها ملك كبير وتكون كثيرة الحروب والفتن ويظهر فيها الجراد ويقل فيها الزرع ويصلح فيها العنب والله أعلم", // الاثنين
+  2: "اذا كان السادس من صفر يوم الثلاثاء فإن تلك السنة كثيرة الأمطار مباركة ويكون السلامة من اليمن ويكثر الحجاج من أهل اليمن والشام وتكون السنة طيبة جيدة والله أعلم", // الثلاثاء
+  3: "اذا كان السادس من صفر يوم الأربعاء فإن تلك السنة رخية الأسعار وتكثر فيها المواشي وتموت فيها الحوامل من النساء ويسقط ملك عظيم ويكثر فيها المرض وينكسف فيها القمر في شهر ربيع الآخر وتكون تلك السنة تامة كثيرة الأمطار في الصيف والخريف ويغلا فيها الذهب والفضة ويرخص المكيول ويغلا المكبوس والله أعلم", // الأربعاء
+  4: "اذا كان السادس من صفر يوم الخميس فإن تلك السنة كثيرة الخوف والجراد والجراد وتموت فيها الغنم ويقع فيها زلزلة عظيمة ويتأخر الصيف ويكثر ويغلا فيها الطعام ويكثر فيها أولاد الزنى وتخرج فيها خارجة من المغرب يضعف سلاطين اليمن والله أعلم", // الخميس
+  5: "اذا كان السادس من صفر يوم الجمعة فإن تلك السنة تكون لينة الشتاء ويرخص فيها الطعام ويصلح فيها جميع الثمار والبهائم ويكثر فيها الإسلام والإيمان الى ان ينكسف الهلال في شعبان فإنه يغلا الطعام ويتأخر الصيف والله أعلم", // الجمعة
+  6: "اذا كان السادس من صفر يوم السبت فإن تلك السنة تكون صلاح اليهود وسعدهم ويكون فيها صلاح المواشي والزرع ويرخص فيها كل موزون ويموت فيها ملك عظيم والله اعلم", // السبت
+};
+
+export const EACH_WEEK_STATUS = {
+  0: "يصلح للبناء", // الاحد
+  1: "جيد للسفر", // الاثنين
+  2: "جيد للحجامة", // الثلاثاء
+  3: "لشرب الدواء", // الأربعاء
+  4: "لقضاء الحوائج", // الخميس
+  5: "جيد للتزويج", // الجمعة
+  6: "يصلح للصيد", // السبت
+};
+export const WEEKDAY_NAME = {
+  0: "الاحد",
+  1: "الاثنين",
+  2: "الثلاثاء",
+  3: "الأربعاء",
+  4: "الخميس",
+  5: "الجمعة",
+  6: "السبت",
+};
+
+export const BAD_DATES = "يكره السفر";
+
+export const BAD_DAYS_IN_THE_MONTH = {
+  3: BADDEST_DAY,
+  5: BADDEST_DAY,
+  13: BADDEST_DAY,
+  16: BADDEST_DAY,
+  21: BADDEST_DAY,
+  24: BADDEST_DAY,
+  25: BADDEST_DAY,
+};
+
+export const BAD_DAYS_IN_THE_YEAR_1 = {
+  "1-12": "اليوم الثاني عشر من شهر محرم الحرام في كل سنة (نحس)",
+  "2-20": "اليوم العشرون من صفر في كل سنة (نحس)",
+  "3-4": "اليوم الرابع من ربيع الأول في كل سنة (نحس)",
+  "4-28": "اليوم الثامن والعشرون من ربيع الآخر في كل سنة (نحس)",
+  "5-28": "اليوم الثامن والعشرون من جماد الاول في كل سنة (نحس)",
+  "6-12": "اليوم الثاني عشر من جماد الآخر في كل سنة (نحس)",
+  "7-12": "اليوم الثاني عشر من شهر رجب في كل سنة (نحس)",
+  "8-26": "اليوم السادس والعشرون من شعبان في كل سنة (نحس)",
+  "9-24": "اليوم الرابع والعشرون من شهر رمضان في كل سنة (نحس)",
+  "10-8": "اليوم الثامن من شوال في كل سنة (نحس)",
+  "11-28": "اليوم الثامن والعشرون من ذي القعدة في كل سنة (نحس)",
+  "12-8": "اليوم الثامن من ذي الحجة. في كل سنة (نحس)",
+};
+
+export const BAD_DAYS_IN_THE_YEAR_2 = {
+  "1-12": BAD_DATES,
+  "2-20": BAD_DATES,
+  "3-4": BAD_DATES,
+  "4-28": BAD_DATES,
+  "5-28": BAD_DATES,
+  "6-12": BAD_DATES,
+  "7-12": BAD_DATES,
+  "8-26": BAD_DATES,
+  "9-24": BAD_DATES,
+  "10-8": BAD_DATES,
+  "11-28": BAD_DATES,
+  "12-8": BAD_DATES,
+};
+
+// الأيام المختارة (سعد) من الشهر
+export const SELECTED_DAYS = {
+  1: "الأول",
+  2: "الثاني",
+  6: "السادس",
+  7: "السابع",
+  9: "التاسع",
+  11: "الحادي عشر",
+  12: "الثاني عشر",
+  17: "السابع عشر",
+  18: "الثامن عشر",
+  20: "العشرون",
+  22: "الثاني والعشرون",
+  23: "الثالث والعشرون",
+  27: "السابع والعشرون",
+  30: "الثلاثون",
+};
+
+// الأيام الممتزجة (ممتزجة)
+export const MIXED_DAYS_NAME = {
+  4: "الرابع",
+  8: "الثامن",
+  10: "العاشر",
+  14: "الرابع عشر",
+  15: "الخامس عشر",
+  19: "التاسع عشر",
+  26: "السادس والعشرون",
+  28: "الثامن والعشرون",
+  29: "التاسع والعشرون",
+};
+
+// الأيام المذمومة (نحس)
+export const UNLUCKY_DAYS = {
+  3: "الثالث",
+  5: "الخامس",
+  13: "الثالث عشر",
+  16: "السادس عشر",
+  21: "الواحد والعشرون",
+  24: "الرابع والعشرون",
+  25: "الخامس والعشرون",
+};
+
+export const SELECTED_DAYS_COLLECTION = {
+  ...SELECTED_DAYS,
+  ...MIXED_DAYS_NAME,
+  ...UNLUCKY_DAYS,
+};
+
+// أسماء الكواكب السبعة
+export const PLANETS = ["زحل", "مشتري", "مريخ", "شمس", "زهرة", "عطارد", "قمر"];
+
+// أسماء البروج الأثنى عشر
+export const ZODIAC_SIGNS = [
+  "الحمل",
+  "الثور",
+  "الجوزاء",
+  "السرطان",
+  "الأسد",
+  "السنبلة",
+  "الميزان",
+  "العقرب",
+  "القوس",
+  "الجدي",
+  "الدلو",
+  "الحوت",
+];
+
+// أسماء المنازل الثمانية والعشرون
+export const NOETHRRN_HOUSES = [
+  "السرطان",
+  "البطين",
+  "الثريا",
+  "الدبران",
+  "الهقعة",
+  "الهنعة",
+  "الذراع",
+  "النثرة",
+  "الطرفة",
+  "الجبهة",
+  "الزبرة",
+  "الصرفة",
+  "العوى",
+  "السماك",
+];
+
+// الأربع عشرة الجنوبية
+export const SOUTHERN_HOUSES = [
+  "الغفر",
+  "الزبانا",
+  "الاكليل",
+  "القلب",
+  "الشولة",
+  "النعايم",
+  "البلدة",
+  "سعد الذابح",
+  "سعد بلع",
+  "سعد السعود",
+  "سعد الأخبية",
+  "الفرع المقدم",
+  "الفرع المؤخر",
+  "الرشا",
+];
+
+window.addEventListener("DOMContentLoaded", () => {
+  if (!document.getElementById(`nowdaysInfo`)) return;
+
+  closestGoodDays(
+    document.getElementById("goodDaysGrid"),
+    SELECTED_DAYS_COLLECTION,
+    Object.values(SELECTED_DAYS_COLLECTION)
+  );
+  document.getElementById("goToDayBtn").addEventListener("click", goToDay);
+});
+
+displayTableYear(Calender.theCurrentDate.getCurrentYearHijri());
+
+const infoBtns = [...document.querySelectorAll("#nowdaysInfo button")];
+infoBtns.forEach((el) => {
+  el.addEventListener("click", () => {
+    let dataShow = el.dataset.show;
+    document.querySelector(`.${dataShow}`).classList.remove("hide");
+  });
+});
+
+// displayNowdaysInfo();
+
+// function displayNowdaysInfo() {
+//   let nowdaysInfo = document.getElementById("nowdaysInfo");
+
+//   nowdaysInfo.append(displayNowdaysInfoBlock("أسماء الكواكب السبعة", PLANETS));
+//   nowdaysInfo.append(
+//     displayNowdaysInfoBlock("أسماء البروج الأثنى عشر", ZODIAC_SIGNS)
+//   );
+//   nowdaysInfo.append(
+//     displayNowdaysInfoBlock(
+//       "المنازل الأربع عشر الشمالية",
+//       NOETHRRN_HOUSES,
+//       { block: "block-grid-3" }
+//     )
+//   );
+//   nowdaysInfo.append(
+//     displayNowdaysInfoBlock(
+//       "المنازل الأربع عشرة الجنوبية",
+//       SOUTHERN_HOUSES,
+//       {
+//         block: "block-grid-3",
+//       }
+//     )
+//   );
+// }
+
+function displayNowdaysInfoBlock(title, days, classes) {
+  let contrainer = createElement("div");
+  contrainer.className =
+    "block d-flex flex-column align-items-center justify-content-center";
+  let h4 = createElement("h4");
+  h4.innerHTML = title;
+  let grid = createElement("div");
+  grid.className = `gap-2 block-content block-grid ${classes?.block}`;
+  for (const day of days) {
+    let span = createElement("span");
+    span.innerHTML = day;
+    span.className = `btn btn-success ${classes?.item}`;
+    grid.append(span);
+  }
+
+  contrainer.append(h4);
+  contrainer.append(grid);
+  return contrainer;
+}
+function displayFirstDay(dayNumber) {
+  if (!document.getElementById(`nowdaysInfo`)) return;
+  let firstDayInYear = STARTING_YEAR[dayNumber];
+  let div = document.querySelector(".year-first-day");
+  div.innerHTML = `
+  <h3 class="year-first-day-title">
+     دخول هذه السنة بيوم ${WEEKDAY_NAME[dayNumber]}
+  </h3>
+  ${firstDayInYear}`;
+}
+
+function displayTableYear(year) {
+  if (!document.getElementById(`nowdaysInfo`)) return;
+
+  let date = new Date();
+  let hijriDate = date.toHijri();
+  let hijriYear = hijriDate._year;
+  let theYear = year ? year : hijriYear;
+  let yearNum = theYear % 210 === 0 ? 210 : theYear % 210;
+
+  for (let i = 1; i <= 12; i++) {
+    let hijriMonth = i;
+    let monthCount = Calender.countDayOfMonth(hijriMonth, theYear);
+
+    if (Calender.leapYears?.includes(yearNum) && i === 12) {
+      monthCount = 30;
+    }
+
+    for (let j = 1; j <= monthCount; j++) {
+      let row = document.getElementById(`nowdaysList`);
+      let monthStatus = EACH_MONTHS_STATUS[j];
+      const hijri = new HijriDate(hijriYear, hijriMonth, j);
+      // let currentDate = new Date();
+
+      const gerogen = hijri.toGregorian();
+
+      let gerogenDate = new Date(gerogen);
+      let currentDate = resetDate(new Date());
+      let active =
+        gerogenDate.getDate() === currentDate.getDate() &&
+        gerogenDate.getMonth() === currentDate.getMonth() &&
+        gerogenDate.getFullYear() === currentDate.getFullYear();
+      let dayType = "";
+      let weekStatus = EACH_WEEK_STATUS[gerogen.getDay()];
+
+      if (hijri._month === 1 && hijri._date === 1) {
+        displayFirstDay(gerogenDate.getDay());
+      }
+
+      let afterSafer = "";
+      let lastWeekStart = monthCount === 30 ? 24 : 23;
+      let isBadDay1 = BAD_DAYS_IN_THE_YEAR_1?.[`${hijriMonth}-${j}`];
+      let isBadDay2 = BAD_DAYS_IN_THE_YEAR_2?.[`${hijriMonth}-${j}`];
+      let badDayInMonth = BAD_DAYS_IN_THE_MONTH[j];
+      let isLastWed = j >= lastWeekStart && gerogenDate.getDay() === 3;
+
+      let currentMonth = Calender.months[hijriMonth]
+        ?.replace(/شهر/gi, "")
+        ?.trim();
+      let isBad = false;
+      if (SELECTED_DAYS?.[j]) {
+        dayType = {
+          msg: `${SELECTED_DAYS?.[j]} من شهر ${currentMonth} (سعد)`,
+          classes: "active-good",
+        };
+      }
+      if (MIXED_DAYS_NAME?.[j]) {
+        dayType = {
+          msg: `${MIXED_DAYS_NAME?.[j]} من شهر ${currentMonth} (ممتزج)`,
+          classes: "active-normal",
+        };
+      }
+      if (UNLUCKY_DAYS?.[j]) {
+        isBad = `${UNLUCKY_DAYS?.[j]} من شهر ${currentMonth} (نحس)`;
+        dayType = {
+          msg: `${UNLUCKY_DAYS?.[j]} من شهر ${currentMonth} (نحس)`,
+          classes: "active-bad should-bad",
+        };
+      }
+
+      let classes = `${active ? "active-col" : ""} ${
+        isBadDay1 || isLastWed ? "active-bad" : ""
+      } ${
+        ((hijriMonth === 2 && j === 6) || SELECTED_DAYS?.[j]) && !isBadDay1
+          ? "active-good"
+          : ""
+      }`;
+
+      if (hijriMonth === 2 && j === 6) {
+        afterSafer = AFTER_SAFAR?.[new Date(gerogen).getDay()];
+      }
+      let content = ``;
+      if (isBadDay1) {
+        dayType.classes = "active-bad active-day-year-bad";
+        content = `
+        <ul class="d-flex flex-column align-items-start mt-2 gap-1 px-2 mb-4">
+        ${isBadDay1 ? `<li>- ${isBadDay1}</li>` : ""}
+        </ul>`;
+      } else if (isLastWed) {
+        dayType.classes = "active-bad active-day-year-bad";
+        content = `
+        <ul class="d-flex flex-column align-items-start mt-2 gap-1 px-2 mb-4">
+        <li>- اخر أربعاء  (نحس)</li>
+        </ul>`;
+      } else if (isBad) {
+        dayType.classes = "active-bad active-day-year-bad";
+        content = `
+        <ul class="d-flex flex-column align-items-start mt-2 gap-1 px-2 mb-4">
+        <li>- ${isBad}</li>
+        </ul>`;
+      } else {
+        content = `
+        <ul class="d-flex flex-column align-items-start mt-2 gap-1 px-2 mb-4">
+  
+        ${priorityStatus && afterSafer ? `<li>- ${afterSafer}</li>` : ""}
+        ${`<li>- ${dayType.msg}</li>`}
+          ${
+            priorityMonth
+              ? `<li>- ${SELECTED_DAYS_COLLECTION?.[j]} هو: <strong>${monthStatus}</strong></li>`
+              : ""
+          }
+          ${
+            priorityWeek
+              ? `<li>- 
+          ${
+            WEEKDAY_NAME?.[new Date(gerogen).getDay()]
+          } من كل اسبوع هو يوم: <strong>${weekStatus}</strong></li>`
+              : ""
+          }
+          ${
+            badDayInMonth
+              ? `<li>- ${SELECTED_DAYS_COLLECTION?.[j]} : ${badDayInMonth}</li>`
+              : ""
+          }
+          ${
+            priorityStatus && isBadDay2
+              ? `<li>- ${isBadDay2} في ${SELECTED_DAYS_COLLECTION?.[j]} من شهر ${currentMonth} كل سنة </li>`
+              : ""
+          }
+          ${
+            priorityStatus && isLastWed
+              ? `<li>- اخر أربعاء  ${BADDEST_DAY}</li>`
+              : ""
+          }
+          </ul>
+          `;
+      }
+
+      let hashId = `${i}-${j}`;
+      row.append(
+        displayDayStatus(
+          {
+            content,
+            title: `${SELECTED_DAYS_COLLECTION?.[j]} من شهر ${currentMonth}`,
+            date: gerogenDate,
+          },
+          classes + ` ${dayType?.classes}`,
+          active ? "nowdaysToday" : "",
+          hashId,
+          row
+        )
+      );
+    }
+  }
+}
+
+function createElement(el) {
+  return document.createElement(el);
+}
+
+function closestGoodDays(el, days, type) {
+  let date = new Date(Calender.theCurrentDate.gregorianDate);
+  let hijriDate = date.toHijri();
+  let MAX_STEPS = 0;
+
+  let keys = Object.keys(days);
+
+  for (let i = 0; i < 5; i++) {
+    if (i > 0) hijriDate.addDay();
+
+    let monthCount = Calender.countDayOfMonth(
+      hijriDate._month,
+      hijriDate._year
+    );
+    let lastWeekStart = monthCount === 30 ? 24 : 23;
+    let isBadDay1 = BAD_DAYS_IN_THE_YEAR_1?.[`${hijriDate._month}-${i}`];
+    let isBadDay2 = BAD_DAYS_IN_THE_YEAR_2?.[`${hijriDate._month}-${i}`];
+    let isLastWed = i >= lastWeekStart && gerogenDate.getDay() === 3;
+    let badDayInMonth = BAD_DAYS_IN_THE_MONTH[i];
+
+    let isBad = isBadDay1 || isBadDay2 || isLastWed || badDayInMonth;
+
+    let index = hijriDate._date;
+    let currentGreDate = hijriDate.toGregorian();
+    let currentMonth = Calender.months[hijriDate._month]
+      ?.replace(/شهر/gi, "")
+      ?.trim();
+    let content = ``;
+    console.log("🚀 ~ closestGoodDays ~ currentMonth:", currentMonth);
+
+    if (UNLUCKY_DAYS?.[index] || isBad || isLastWed) {
+      if (isLastWed) content = "اخر اربعاء من كل شهر (نحس)";
+      else if (isBadDay1 || isBadDay2 || badDayInMonth)
+        content = `${SELECTED_DAYS_COLLECTION?.[index]} من شهر ${currentMonth} (نحس)`;
+      else content = `${UNLUCKY_DAYS?.[index]} من شهر ${currentMonth} (نحس)`;
+    } else if (SELECTED_DAYS?.[index]) {
+      content = `${SELECTED_DAYS?.[index]} من شهر ${currentMonth} (سعد)`;
+    } else if (MIXED_DAYS_NAME?.[index]) {
+      content = `${MIXED_DAYS_NAME?.[index]} من شهر ${currentMonth} (ممتزج)`;
+      console.log("🚀 ~ closestGoodDays ~ content:", content);
+    }
+
+    MAX_STEPS++;
+    el.innerHTML += `
+    <div class="table-style-grid">
+    <h4>${content}</h4>
+    <span class="timer-style timer">${calculateDate(
+      new Date(currentGreDate).toISOString()
+    )}</span>
+  </div>`;
+  }
+}
+
+function displayDayStatus(item, classes, id, hashId, row) {
+  let li = document.createElement("li");
+  let gregorian = new Date(item.date).toLocaleDateString("ar-EG", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+  if (id) {
+    let span = document.createElement("li");
+    span.id = id;
+    span.className = "my-4";
+    row.append(span);
+  }
+  li.id = hashId;
+  let hijri = new Date(item.date).toHijri();
+  li.className = `events-item __counter_2 ${classes}`;
+  li.innerHTML += `
+    <span type="" id="${id}" ></span>
+    <h4 class="font-bold" >${item.title}</h4>
+    ${item?.content}
+    <p class="d-flex align-items justify-content-between">
+    <span>${new Date(item.date).toLocaleDateString("ar-SA", {
+      weekday: "long",
+    })} ${hijri._date} ${Calender.months[hijri._month]} ${hijri._year}</span>
+      <span  class="text-danger">${gregorian}</span>
+      </p>
+      ${calculateDate(item.date)}
+  `;
+  return li;
+}
+// <p class="d-flex flex-column gap-2 align-items-start px-2 my-2"></p>
+
+function goToDay() {
+  let month = document.querySelector(".go-to-day__month").value;
+  let day = document.querySelector(".go-to-day__day").value;
+  const regex = /^(1[0-2]|[2-9])-([2-9]|[12][0-9]|30)$/;
+
+  const element = document.getElementById(`${month}-${day}`);
+  element.scrollIntoView();
+}

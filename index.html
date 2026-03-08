@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="ar">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="upgrade-insecure-requests"
+    />
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <!-- Favicon -->
+    <title>الفتح السليماني الطيبي</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.rtl.min.css"
+      integrity="sha384-gXt9imSW0VcJVHezoNQsP+TNrjYXoGcrqBZJpry9zJt8PCQjobwmhMGaDHTASo9N"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/icons.css" />
+    <link rel="stylesheet" href="css/globle.css" />
+    <link rel="stylesheet" href="css/themes.css" />
+    <link rel="stylesheet" href="css/home-page.css" />
+  </head>
+  <body data-theme_bg="green">
+    <div id="app-loader" class="app-loader">
+      <div class="app-loader__inner">
+        <div class="app-loader__spinner"></div>
+        <p class="app-loader__text">جارٍ تحميل البيانات...</p>
+      </div>
+    </div>
+    <div class="backdrop-modal _modal-planets-1 hide">
+      <div class="planets-modal-1">
+        <div
+          class="block d-flex flex-column align-items-center justify-content-center"
+        >
+          <h4>أسماء الكواكب السبعة</h4>
+          <div class="gap-2 block-content block-grid undefined">
+            <span class="btn btn-success undefined">زحل</span
+            ><span class="btn btn-success undefined">مشتري</span
+            ><span class="btn btn-success undefined">مريخ</span
+            ><span class="btn btn-success undefined">شمس</span
+            ><span class="btn btn-success undefined">زهرة</span
+            ><span class="btn btn-success undefined">عطارد</span
+            ><span class="btn btn-success undefined">قمر</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="backdrop-modal _modal-planets-2 hide">
+      <div class="planets-modal-2">
+        <div
+          class="block d-flex flex-column align-items-center justify-content-center"
+        >
+          <h4>أسماء البروج الأثنى عشر</h4>
+          <div class="gap-2 block-content block-grid undefined">
+            <span class="btn btn-success undefined">الحمل</span
+            ><span class="btn btn-success undefined">الثور</span
+            ><span class="btn btn-success undefined">الجوزاء</span
+            ><span class="btn btn-success undefined">السرطان</span
+            ><span class="btn btn-success undefined">الأسد</span
+            ><span class="btn btn-success undefined">السنبلة</span
+            ><span class="btn btn-success undefined">الميزان</span
+            ><span class="btn btn-success undefined">العقرب</span
+            ><span class="btn btn-success undefined">القوس</span
+            ><span class="btn btn-success undefined">الجدي</span
+            ><span class="btn btn-success undefined">الدلو</span
+            ><span class="btn btn-success undefined">الحوت</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="backdrop-modal _modal-planets-3 hide">
+      <div class="planets-modal-3">
+        <div
+          class="block d-flex flex-column align-items-center justify-content-center"
+        >
+          <h4 class="mb-2 font-weight-bold">المنازل الأربع عشر الشمالية</h4>
+          <div class="gap-2 block-content block-grid block-grid-3">
+            <span class="btn btn-success undefined">السرطان</span
+            ><span class="btn btn-success undefined">البطين</span
+            ><span class="btn btn-success undefined">الثريا</span
+            ><span class="btn btn-success undefined">الدبران</span
+            ><span class="btn btn-success undefined">الهقعة</span
+            ><span class="btn btn-success undefined">الهنعة</span
+            ><span class="btn btn-success undefined">الذراع</span
+            ><span class="btn btn-success undefined">النثرة</span
+            ><span class="btn btn-success undefined">الطرفة</span
+            ><span class="btn btn-success undefined">الجبهة</span
+            ><span class="btn btn-success undefined">الزبرة</span
+            ><span class="btn btn-success undefined">الصرفة</span
+            ><span class="btn btn-success undefined">العوى</span
+            ><span class="btn btn-success undefined">السماك</span>
+          </div>
+        </div>
+        <div
+          class="block d-flex flex-column align-items-center justify-content-center mt-4"
+        >
+          <h4 class="mb-2 font-weight-bold">المنازل الأربع عشرة الجنوبية</h4>
+          <div class="gap-2 block-content block-grid block-grid-3">
+            <span class="btn btn-success undefined">الغفر</span
+            ><span class="btn btn-success undefined">الزبانا</span
+            ><span class="btn btn-success undefined">الاكليل</span
+            ><span class="btn btn-success undefined">القلب</span
+            ><span class="btn btn-success undefined">الشولة</span
+            ><span class="btn btn-success undefined">النعايم</span
+            ><span class="btn btn-success undefined">البلدة</span
+            ><span class="btn btn-success undefined">سعد الذابح</span
+            ><span class="btn btn-success undefined">سعد بلع</span
+            ><span class="btn btn-success undefined">سعد السعود</span
+            ><span class="btn btn-success undefined">سعد الأخبية</span
+            ><span class="btn btn-success undefined">الفرع المقدم</span
+            ><span class="btn btn-success undefined">الفرع المؤخر</span
+            ><span class="btn btn-success undefined">الرشا</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="backdrop-modal _modal-nowdays hide">
+      <div class="nowdays-modal">
+        <div id="nowdays">
+          <div id="nowdaysTable" class="position-relative">
+            <div class="year-first-day"></div>
+            <div id="nowdaysListHeader">
+              <div class="go-to-day">
+                <select class="form-control go-to-day__day">
+                  <option>يوم</option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <option>6</option>
+                  <option>7</option>
+                  <option>8</option>
+                  <option>9</option>
+                  <option>10</option>
+                  <option>11</option>
+                  <option>12</option>
+                  <option>13</option>
+                  <option>14</option>
+                  <option>15</option>
+                  <option>16</option>
+                  <option>17</option>
+                  <option>18</option>
+                  <option>19</option>
+                  <option>20</option>
+                  <option>21</option>
+                  <option>22</option>
+                  <option>23</option>
+                  <option>24</option>
+                  <option>25</option>
+                  <option>26</option>
+                  <option>27</option>
+                  <option>28</option>
+                  <option>29</option>
+                  <option>30</option>
+                </select>
+                <select class="form-control go-to-day__month" placeholder="شهر">
+                  <option>شهر</option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <option>6</option>
+                  <option>7</option>
+                  <option>8</option>
+                  <option>9</option>
+                  <option>10</option>
+                  <option>11</option>
+                  <option>12</option>
+                </select>
+                <!-- <input
+                  id="goToDay"
+                  class="form-control"
+                  aria-label="go to specific day"
+                  placeholder="12-24"
+                /> -->
+                <button id="goToDayBtn" class="btn btn-primary">أذهب</button>
+              </div>
+              <a href="/times.html" class="btn btn-danger"
+                >نحوس وسعود الساعات</a
+              >
+            </div>
+            <ul id="nowdaysList"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="backdrop-modal _modal-fasting hide">
+      <div class="fasting-modal">
+        <div class="modal-tabs"><h4 class="_modal-title">الصيام</h4></div>
+        <div class="fasting-grid" id="fastingGrid"></div>
+      </div>
+    </div>
+    <div class="backdrop-modal _modal-days hide">
+      <div class="_modal-content">
+        <div
+          class="position-relative d-flex align-items-center justify-content-between"
+        >
+          <span id="goPrevYear" class="mx-2">
+            <i class="gg-chevron-right"></i>
+          </span>
+          <div class="_modal-title d-flex flex-column align-items-center">
+            <span>بداية شهور سنة</span>
+            <button id="backToStarterYear" class="btn btn-sm btn-danger hide">
+              العودة للسنة الحالية
+            </button>
+          </div>
+          <span id="goNextYear" class="mx-2">
+            <i class="gg-chevron-right __left"></i>
+          </span>
+        </div>
+        <div class="row-first-days"></div>
+      </div>
+    </div>
+    <nav class="navbar navbar-dark bg-primary">
+      <div class="container">
+        <a class="navbar-brand" href="/"> الفتح السليماني الطيبي </a>
+
+        <div
+          class="controllers"
+        >
+          <a
+            href="https://calendar.google.com/calendar/u/0/r?cid=7e40f44d20204d4d53d6df12169e8c27c16ff3fcb7e4669eb2fe90e8803f8846@group.calendar.google.com"
+            target="_blank"
+            data-title="للإشتراك في تذكيرات الفتح"
+            class="custom_tooltip calender-icon btn d-flex align-items-center"
+            style="margin-right: auto !important"
+          >
+            <i class="gg-calendar"></i>
+          </a>
+          <!-- Themes -->
+          <div id="theme">
+            <button
+              id="changeTheme"
+              data-title="تغيير الثيم"
+              class="btn custom_tooltip"
+            >
+              <i class="gg-color-picker"></i>
+            </button>
+            <div class="themes hide"></div>
+          </div>
+          <!-- Themes -->
+          <button
+            id="autoLocation"
+            data-title="تحديد الموقع تلقائيا"
+            class="custom_tooltip btn d-flex align-items-center"
+          >
+            <span class="location-icon"></span>
+          </button>
+          <button
+            id="chooseLocation"
+            data-title="اختيار الموقع يدويا"
+            class="custom_tooltip btn d-flex align-items-center"
+          >
+            <i class="gg-track"></i>
+          </button>
+
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#collapsibleNavId"
+            aria-controls="collapsibleNavId"
+            aria-expanded="false"
+            data-title="القائمة"
+            class="custom_tooltip"
+            aria-label="Toggle navigation"
+          >
+            <i class="gg-menu"></i>
+          </button>
+        </div>
+
+        <div class="collapse" id="collapsibleNavId">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0"></ul>
+        </div>
+      </div>
+    </nav>
+    <div class="homepage">
+      <div class="container">
+        <div class="page-info text-center">
+          <p id="locationsInfo"></p>
+          <div class="table-style">
+            <div class="table-style-item display-6" id="dayWeek"></div>
+            <div class="table-style-item display-6" id="date"></div>
+          </div>
+          <div class="table-style table-style-auto">
+            <div class="table-style-item">
+              <span class="table-style-type">آية السنة</span>
+              <span class="table-style-value" id="firstDayOfYear"></span>
+            </div>
+            <div class="table-style-item">
+              <span class="table-style-type">كبيسة</span>
+              <span class="table-style-value" id="yearLeap"></span>
+            </div>
+            <div class="table-style-item">
+              <span class="table-style-type">السنة في القرن الأصغر</span>
+              <span class="table-style-value" id="yearSmallCentury"></span>
+            </div>
+            <div class="table-style-item">
+              <span class="table-style-type">قرن أصغر</span>
+              <span class="table-style-value" id="smallCentury"></span>
+            </div>
+            <div class="table-style-item">
+              <span class="table-style-type"> قرن أكبر </span>
+              <span class="table-style-value" id="bigCentury"></span>
+            </div>
+          </div>
+          <div class="prayer-single">
+            <div class="prayer-grid"></div>
+          </div>
+
+          <!-- <div class="table-style">
+            <div class="table-style-item">
+              <span class="table-style-type">الساعة الحالية</span>
+              <span class="table-style-value" id="timeNow"></span>
+            </div>
+            <div class="table-style-item">
+              <span class="table-style-type"> تنتهي بعد </span>
+              <span id="timeNowTimer"></span>
+            </div>
+            <div class="table-style-item">
+              <span class="table-style-type"> الساعة التالية</span>
+              <span class="table-style-value" id="timeNext"></span>
+            </div>
+          </div> -->
+          <div class="table-style" style="flex-direction: column">
+            <div class="table-style-item open-events-modal" id="closestEvent">
+              <a href="#closestEventItem">
+                <span class="table-style-type">المناسبات</span>
+                <div class="table-grid text-xs"></div>
+              </a>
+            </div>
+            <div class="table-style-item" id="closestFasting">
+              <a href="#closestFastingItem">
+                <span class="table-style-type">الصيام </span>
+                <div class="table-grid" id="closestFastingGrid"></div>
+              </a>
+            </div>
+          </div>
+          <div class="table-style">
+            <a href="#nowdaysToday" class="d-flex w-full" id="goodDays">
+              <div
+                class="table-style-item open-nowdays-modal primary-color-force"
+              >
+                <span class="table-style-type">سعود الايام والنحوس</span>
+                <div class="table-grid" id="goodDaysGrid"></div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div id="nowdaysInfo">
+        <button
+          class="btn__modal btn bg-white rounded-3 planets-1"
+          data-show="_modal-planets-1"
+        >
+          الكواكب السبعة
+        </button>
+        <button
+          class="btn__modal btn bg-white rounded-3 planets-2"
+          data-show="_modal-planets-2"
+        >
+          البروج الأثنى عشر
+        </button>
+        <button
+          class="btn__modal btn bg-white rounded-3 planets-3"
+          data-show="_modal-planets-3"
+        >
+          منازل القمر
+        </button>
+      </div>
+    </div>
+    <div class="visitors" id="visitors"></div>
+    <footer>
+      <a class="text-white text-bold" href="/"> الفتح السليماني الطيبي </a>
+    </footer>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/gh/abdennour/hijri-date@master/cdn/hijri-date-latest.js"
+      type="text/javascript"
+    ></script>
+
+    <script src="https://unpkg.com/@supabase/supabase-js"></script>
+    <script src="js/times-setup.js" type="module"></script>
+    <script src="js/global.js" type="module"></script>
+    <script src="js/home-page.js" type="module"></script>
+    <script src="js/fastings.js" type="module"></script>
+    <script src="js/visitors.js"></script>
+    <script src="js/nowdays.js" type="module"></script>
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+      var Tawk_API = Tawk_API || {},
+        Tawk_LoadStart = new Date();
+      (function () {
+        var s1 = document.createElement("script"),
+          s0 = document.getElementsByTagName("script")[0];
+        s1.async = true;
+        s1.src = "https://embed.tawk.to/65ab51930ff6374032c29c54/1hkijdahj";
+        s1.charset = "UTF-8";
+        s1.setAttribute("crossorigin", "*");
+        s0.parentNode.insertBefore(s1, s0);
+      })();
+    </script>
+    <!--End of Tawk.to Script-->
+  </body>
+</html>

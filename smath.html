@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="upgrade-insecure-requests"
+    />
+    <meta
+      content="برمجة خاصه لالفتح السليماني الطيبي لمعرفة برجك بطريقة حساب الجمل"
+      name="description"
+    />
+    <meta content="text/html; charset=windows-1256" http-equiv="Content-Type" />
+    <meta content="ar-sa" http-equiv="Content-Language" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.rtlcss.com/bootstrap/v4.5.3/css/bootstrap.min.css"
+      integrity="sha384-JvExCACAZcHNJEc7156QaHXTnQL3hQBixvj5RV5buE7vgnNEzzskDtx9NQ4p6BJe"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/icons.css" />
+    <link rel="stylesheet" href="css/globle.css" />
+    <link rel="stylesheet" href="css/themes.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <!-- <link
+      href="//db.onlinewebfonts.com/c/2e6ae3642c879522873a28ede1eaac69?family=Helvetica+Neue+W23+for+SKY+Reg"
+      rel="stylesheet"
+      type="text/css"
+    /> -->
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <!-- Favicon -->
+    <title>الفتح السليماني الطيبي</title>
+  </head>
+  <!--End of Tawk.to Script-->
+  <body data-theme_bg="green">
+    <nav class="navbar navbar-dark bg-primary">
+      <div class="container d-flex">
+        <a class="navbar-brand" href="/">الفتح السليماني الطيبي</a>
+        <a
+          href="/calender.html"
+          data-title="أذهب الي التقويم"
+          class="custom_tooltip calender-icon btn d-flex align-items-center"
+          style="margin-right: auto !important"
+        >
+          <i class="gg-calendar"></i>
+        </a>
+        <!-- Themes -->
+        <div id="theme">
+          <button
+            id="changeTheme"
+            data-title="تغيير الثيم"
+            class="btn custom_tooltip"
+          >
+            <i class="gg-color-picker"></i>
+          </button>
+          <ul class="themes hide"></ul>
+        </div>
+        <!-- Themes -->
+        <button id="autoLocation" class="btn d-flex align-items-center">
+          <span class="location-icon"></span>
+        </button>
+        <button id="chooseLocation" class="btn d-flex align-items-center">
+          <i class="gg-track"></i>
+        </button>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#collapsibleNavId"
+          aria-controls="collapsibleNavId"
+          aria-expanded="false"
+          data-title="القائمة"
+          class="custom_tooltip"
+          aria-label="Toggle navigation"
+        >
+          <i class="gg-menu"></i>
+        </button>
+        <div class="collapse" id="collapsibleNavId">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0"></ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container mini-container">
+      <div id="knowTower" class="my-5">
+        <h2 class="text-center mb-3">حساب الجمل</h2>
+        <div class="row justify-content-center">
+          <form action="" class="mx-auto col-lg-8">
+            <div class="d-flex justify-content-center">
+              <div class="form-group mr-2">
+                <label for="name"> ادخل الجملة</label>
+                <input
+                  type="text"
+                  id="inputName"
+                  class="form-control"
+                  placeholder="الله اكبر"
+                />
+              </div>
+            </div>
+            <div class="d-flex mt-2 justify-content-center">
+              <button
+                type="button"
+                class="btn btn-md btn-primary mx-2"
+                onclick="calculate();"
+              >
+                أحسب
+              </button>
+              <button id="reset" type="button" class="btn btn-md btn-danger">
+                حذف
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="roles my-5" id="showResult"></div>
+    <div class="visitors" id="visitors"></div>
+    <footer class="bottom-fixed">
+      <a class="text-white text-bold" href="/"> الفتح السليماني الطيبي </a>
+    </footer>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/gh/abdennour/hijri-date@master/cdn/hijri-date-latest.js"
+      type="text/javascript"
+    ></script>
+    <script src="https://unpkg.com/@supabase/supabase-js"></script>
+    <script src="js/global.js" type="module"></script>
+    <script src="js/main_2.js"></script>
+    <script src="js/visitors.js"></script>
+  </body>
+</html>
