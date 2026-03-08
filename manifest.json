@@ -10,7 +10,7 @@
   "theme_color": "#ffffff",
   "icons": [
     {
-      "src": "/favicon.png",
+      "src": "https://hatem1802.github.io/Alfath-Alsolimany/favicon.ico",
       "type": "image/x-icon",
       "isSquare": false,
       "isPng": false,
