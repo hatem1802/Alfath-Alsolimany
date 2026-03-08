@@ -11,7 +11,7 @@
   "icons": [
     {
       "src": "/appstore-images/android/launchericon-192x192.png",
-      "type": "image",
+      "type": "png",
       "isSquare": false,
       "isPng": false,
       "isWebp": false,
