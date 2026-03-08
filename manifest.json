@@ -10,9 +10,10 @@
   "theme_color": "#ffffff",
   "icons": [
     {
-      "src": "/appstore-images/android/launchericon-192x192.png",
+      "src": "appstore-images/android/launchericon-192x192.png",
       "type": "png",
       "sizes":"192x192",
+      "purpose":"any",
       "isSquare": false,
       "isPng": false,
       "isWebp": false,
@@ -23,9 +24,10 @@
       "is192x192": false
     },
     {
-      "src": "/appstore-images/android/launchericon-512x512.png",
+      "src": "appstore-images/android/launchericon-512x512.png",
       "type": "png",
       "sizes":"512x512",
+      "purpose":"any",
       "isSquare": false,
       "isPng": false,
       "isWebp": false,
