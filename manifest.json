@@ -2,15 +2,15 @@
   "background_color": "#ffffff",
   "dir": "rtl",
   "display": "standalone",
-  "name": "hatem1802.github",
+  "name": "Alfath",
   "orientation": "any",
   "scope": "/",
-  "short_name": "hatem1802.github",
+  "short_name": "Alfath",
   "start_url": "/",
   "theme_color": "#ffffff",
   "icons": [
     {
-      "src": "/Alfath-Alsolimany/appstore-images/android/launchericon-192x192.png",
+      "src": "/appstore-images/android/launchericon-192x192.png",
       "type": "png",
       "isSquare": false,
       "isPng": false,
@@ -23,5 +23,6 @@
     }
   ],
   "description": "mobile app",
-  "lang": "ar"
+  "lang": "ar",
+  "id": "apply destructive changes"
 }
