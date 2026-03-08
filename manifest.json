@@ -10,7 +10,8 @@
   "theme_color": "#ffffff",
   "icons": [
     {
-      "src": "/favicon",
+      "src": "/favicon/web-app-manifest-192x192.png",
+      "sizes":"192x192",
       "type": "image",
       "isSquare": false,
       "isPng": false,
