@@ -10,8 +10,8 @@
   "theme_color": "#ffffff",
   "icons": [
     {
-      "src": "/favicon.png",
-      "type": "image/x-icon",
+      "src": "/favicon",
+      "type": "image",
       "isSquare": false,
       "isPng": false,
       "isWebp": false,
