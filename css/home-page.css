@@ -143,6 +143,10 @@ li.link {
   background: #f0f8ff;
 }
 
+.prayer-grid-item:last-child {
+  grid-column: 1 / -1;
+}
+
 /* Prayer name */
 .prayer-grid-item span:first-of-type {
   font-weight: 700;
