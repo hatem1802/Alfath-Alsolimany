@@ -511,12 +511,17 @@ function closestGoodDays(el) {
     }
 
     el.innerHTML += `
-    <div class="table-style-grid">
+        <div class= "table-style-grid d-flex justify-content-between flex-row  ">
+        <div class="d-flex flex-column">
     <h4>${content}</h4>
     <span class="timer-style timer">${calculateDate(
       new Date(currentGreDate).toISOString()
     )}</span>
-  </div>`;
+  </div>
+      <i class="bi bi-arrow-left-circle"></i>
+  </div>
+
+  `;
   }
 }
 

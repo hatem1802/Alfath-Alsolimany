@@ -132,12 +132,11 @@ window.addEventListener("DOMContentLoaded", () => {
       <span>${calculateDate(fasting.date)}</span>
       <p>${fasting.title}</p>
       <div class="d-flex align-items-center justify-content-between">
-        <span>${hijri?._date} ${months?.[hijri?._month]} ${
-      hijri?._year
-    } هـ</span>
+        <span>${hijri?._date} ${months?.[hijri?._month]} ${hijri?._year
+      } هـ</span>
         <span class="text-danger" style="font-size:14px">${new Date(
-          gregorianDate
-        ).toLocaleDateString("ar-EG")}</span>
+        gregorianDate
+      ).toLocaleDateString("ar-EG")}</span>
       </div>
     </div>
     
@@ -154,14 +153,24 @@ window.addEventListener("DOMContentLoaded", () => {
         stepOfCondition < 3
       ) {
         stepOfCondition++;
-        fastingContainer.innerHTML += `<div class= "table-style-grid">
+        fastingContainer.innerHTML += `
+        
+        <div class= "table-style-grid d-flex justify-content-between flex-row  ">
+        <div class="d-flex flex-column">
       <h4>${fastings[index].title} <small>${fastings[index].month}</small> </h4>
-      <span class="timer-style timer ${
-        Date.parse(fastings[index].date) > Date.parse(new Date())
-          ? ""
-          : "completed"
-      } ">${calculateDate(fastings[index].date)}</span>
-    </div>`;
+      <span class="timer-style timer ${Date.parse(fastings[index].date) > Date.parse(new Date())
+            ? ""
+            : "completed"
+          } ">${calculateDate(fastings[index].date)}</span>
+    </div>
+    <i class="bi bi-arrow-left-circle"></i>
+
+    </div>
+
+
+
+
+    `;
       }
     }
   } else {

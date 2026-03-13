@@ -190,12 +190,19 @@ window.addEventListener("DOMContentLoaded", () => {
     ) {
       MAX_STEPS++;
       eventsContainer.innerHTML += `
-      <div class="table-style-grid">
-        <h4>${globalEvents[index].title}</h4>
-        <span class="timer-style timer">${calculateDate(
-        globalEvents[index].date
-      )}</span>
-      </div>`;
+<div class="table-style-grid d-flex flex-row justify-content-between align-items-center">
+
+  <div class="d-flex flex-column text-end">
+    <h4>${globalEvents[index].title}</h4>
+    <span class="timer-style timer">
+      ${calculateDate(globalEvents[index].date)}
+    </span>
+  </div>
+
+    <i class="bi bi-arrow-left-circle"></i>
+
+</div>
+`;
     }
   }
   const appLoader = document.getElementById("app-loader");
@@ -303,53 +310,86 @@ async function prayerTimingDay() {
   if (timings && timings.Fajr) {
     prayerTime.Fajr = convertTime(timings.Fajr);
   }
+// نحول كل الوقت إلى دقائق منذ بداية اليوم
+  function timeToMinutes(timeStr) {
+    const [h, m] = timeStr.split(":").map(Number);
+    return h * 60 + m;
+  }
 
-  let prayGrid = document.querySelector(".prayer-grid");
-  prayGrid.innerHTML = `
-  <div class="prayer-grid-item Sunrise">
-      <span>الشروق</span>
-      <span>${prayerTime.Sunrise}</span>
-  </div>
-  <div class="prayer-grid-item Duher">
-      <span>وقت الزوال</span>
-      <span>${prayerTime.Duher}</span>
-  </div>
+  const nowMinutes = date.getHours() * 60 + date.getMinutes();
 
-  <div class="prayer-grid-item Asr">
-      <span>العصر</span>
-      <span>${prayerTime.Asr}</span>
-  </div>
- 
-  <div class="prayer-grid-item Maghrib">
-      <span>الغروب</span>
-      <span>${prayerTime.Maghrib}</span>
-  </div>
+  const prayers = [
+    { name: "Fajr", label: "الفجر" },
+    { name: "Sunrise", label: "الشروق" },
+    { name: "Duher", label: "وقت الزوال" },
+    { name: "Asr", label: "العصر" },
+    { name: "Maghrib", label: "الغروب" },
+    { name: "Isha", label: "العشاء" },
+    { name: "MidNight", label: "منتصف الليل" },
+  ];
 
-  <div class="prayer-grid-item Isha">
-      <span>العشاء</span>
-      <span>${prayerTime.Isha}</span>
-  </div>
+  // نحدد الصلاة الحالية
+  let currentPrayer = "";
+  for (let i = 0; i < prayers.length; i++) {
+    const start = timeToMinutes(prayerTime[prayers[i].name]);
+    const end =
+      i + 1 < prayers.length
+        ? timeToMinutes(prayerTime[prayers[i + 1].name])
+        : 24 * 60;
+    if (nowMinutes >= start && nowMinutes < end) {
+      currentPrayer = prayers[i].name;
+      break;
+    }
+  }
 
-  <div class="prayer-grid-item MidNight">
-      <span>منتصف الليل</span>
-      <span>${prayerTime.MidNight}</span>
-  </div>
-
-  <div class="prayer-grid-item Fajr">
-      <span>الفجر</span>
-      <span>${prayerTime.Fajr}</span>
-  </div>
-  `;
+  const prayGrid = document.querySelector(".prayer-grid");
+  prayGrid.innerHTML = prayers
+    .map(
+      (p) => `
+    <div class="prayer-grid-item ${p.name} ${
+        p.name === currentPrayer ? "current" : ""
+      }">
+      <span>${p.label}</span>
+      <span>${prayerTime[p.name]}</span>
+    </div>
+  `
+    )
+    .join("");
 }
-/**
 
- <div class="prayer-grid-item Asr">
-      <span>العصر</span>
-      <span>${prayerTime.Asr}</span>
-  </div>
+window.addEventListener("DOMContentLoaded", () => {
+function arabicNumberText(number) {
+  const arabicNumbers = [
+    "", "الأول", "الثاني", "الثالث", "الرابع", "الخامس", "السادس",
+    "السابع", "الثامن", "التاسع", "العاشر", "الحادي عشر", "الثاني عشر",
+    "الثالث عشر", "الرابع عشر", "الخامس عشر", "السادس عشر", "السابع عشر",
+    "الثامن عشر", "التاسع عشر", "العشرون", "الحادي والعشرون", "الثاني والعشرون",
+    "الثالث والعشرون", "الرابع والعشرون", "الخامس والعشرون", "السادس والعشرون",
+    "السابع والعشرون", "الثامن والعشرون", "التاسع والعشرون", "الثلاثون"
+  ];
 
-    <div class="prayer-grid-item Isha">
-      <span>العشاء</span>
-      <span>${prayerTime.Isha}</span>
-  </div>
- */
+  return arabicNumbers[number] || number;
+}
+  const hijriMonthsWithDescription = [
+  { name: "محرم", description: "شهر الحرام" },
+  { name: "صفر", description: "شهر السفر" },
+  { name: "ربيع الأول", description: "شهر الفتوحات" },
+  { name: "ربيع الآخر", description: "شهر البركات" },
+  { name: "جمادى الأولى", description: "شهر الاستعداد" },
+  { name: "جمادى الآخرة", description: "شهر الطاعة" },
+  { name: "رجب", description: "شهر الله" },
+  { name: "شعبان", description: "شهر الاستعداد لشهر رمضان" },
+  { name: "رمضان", description: "شهر الرحمة" },
+  { name: "شوال", description: "شهر الفرح" },
+  { name: "ذو القعدة", description: "شهر الحاج" },
+  { name: "ذو الحجة", description: "شهر الحج" },
+];
+
+let hijri = returnHijriConfiguration(new Date());
+  const currentMonth = hijriMonthsWithDescription[hijri.hijriMonth -1];
+
+document.getElementById("month-discription").textContent = currentMonth.description;
+document.getElementById("month-number").textContent = hijri.hijriDayNum;
+document.getElementById("month-text").textContent =
+  `${arabicNumberText(hijri.hijriDayNum)} من ${months[hijri.hijriMonth]}`;
+});

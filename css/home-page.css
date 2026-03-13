@@ -1,3 +1,6 @@
+:root {
+  --primaryColor: #0a3d2e;
+}
 .homepage {
   min-height: calc(100vh - 56px);
   display: flex;
@@ -36,23 +39,24 @@
 
 .page-info span:not(.main-date span) {
   /* background: #ffffff; */
-  color: #0a0a0a;
-  /* padding: 0.25rem 0.5rem; */
-  border-radius: 0.5rem;
+  color: gray;
+  padding: none;
 }
 .events-item,
 .event,
 .page-info p:not(#timeNow p),
 .links .link a {
-  background: #ffffff;
-  font-size: 1.3rem;
-  padding: 1rem;
-  border-radius: var(--card-radius, 1.25rem);
-  margin-bottom: 1rem;
-  box-shadow: var(--card-shadow, 0 18px 40px rgba(15, 23, 42, 0.12));
+  /* background: #ffffff; */
+  font-size: 0.7rem;
+  /* padding: 1rem; */
+  /* border-radius: var(--card-radius, 1.25rem); */
+  /* margin-bottom: 1rem; */
+  /* box-shadow: var(--card-shadow, 0 18px 40px rgba(15, 23, 42, 0.12)); */
   /* box-shadow: 0 4px 2px #c025; */
 
   text-align: center;
+  /* background: none !important; */
+
 }
 /* #smallCentury {
   border-bottom: 6px solid #ff5722;
@@ -108,67 +112,97 @@ li.link {
   margin: 0;
 }
 /* Prayer grid */
+/* Container grid */
 .prayer-grid {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 1rem;
-  flex-wrap: wrap;
-  margin-bottom: 1rem;
-  /* display: grid;
-  grid-template-columns: repeat(4,1fr); */
+  margin-bottom: 1.5rem;
 }
 
+/* Each prayer card */
 .prayer-grid-item {
-  font-size: 1.3rem;
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem;
-  border-radius: var(--card-radius, 1.25rem);
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
   display: flex;
   flex-direction: column;
-  flex: 1;
   justify-content: center;
   align-items: center;
-  position: relative;
+  padding: 1rem 0.8rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.1);
   background: #ffffff;
-  background-size: cover;
-}
-.prayer-grid-item span {
-  position: relative;
-  z-index: 2;
-  white-space: nowrap;
-  color: #0f172a;
+  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+  cursor: default;
+  text-align: center;
 }
 
+/* Hover effect */
+.prayer-grid-item:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.2);
+  background: #f0f8ff;
+}
+
+/* Prayer name */
+.prayer-grid-item span:first-of-type {
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: #0f172a;
+  margin-bottom: 0.5rem;
+}
+
+/* Prayer time bubble */
 .prayer-grid-item span:last-of-type {
   border-radius: 999px;
-  padding: 0.15rem 0.9rem;
-  font-size: 1.1rem;
-  background-color: #f6f5f0;
+  padding: 0.35rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: #e6f0ff;
+  color: #085b0b;
+  min-width: 60px;
 }
-.prayer-grid-item::before {
-  content: none;
+
+/* Individual prayer colors */
+.prayer-grid-item.Fajr span:last-of-type {
+  background-color: #cce6ff;
+  color: #00509e;
 }
-.prayer-grid-item.Fajr {
-  background-image: none;
+.prayer-grid-item.Sunrise span:last-of-type {
+  background-color: #fff0cc;
+  color: #d97706;
 }
-.prayer-grid-item.Sunrise {
-  background-image: none;
+.prayer-grid-item.Duher span:last-of-type {
+  background-color: #e6ffe6;
+  color: #0f5132;
 }
-.prayer-grid-item.Duher {
-  background-image: none;
+.prayer-grid-item.Asr span:last-of-type {
+  background-color: #fff0f6;
+  color: #b91c1c;
 }
-.prayer-grid-item.Asr {
-  background-image: none;
+.prayer-grid-item.Maghrib span:last-of-type {
+  background-color: #ffe6e6;
+  color: #b91c1c;
 }
-.prayer-grid-item.Maghrib {
-  background-image: none;
+.prayer-grid-item.Isha span:last-of-type {
+  background-color: #f0e6ff;
+  color: #4b0082;
 }
-.prayer-grid-item.Isha {
-  background-image: none;
+.prayer-grid-item.MidNight span:last-of-type {
+  background-color: #e6f0ff;
+  color: #00509e;
 }
-.prayer-grid-item.MidNight {
-  background-image: none;
+
+/* Highlight current prayer */
+.prayer-grid-item.current {
+  background: #085b0b;
+  color: #fff;
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.prayer-grid-item.current span:last-of-type {
+  background-color: #fff;
+  color: #085b0b;
 }
 
 .row-first-days {
@@ -319,6 +353,7 @@ span.status-bad ~ #timeNowTimer .flex-column span:first-child {
 .open-events-modal a * {
   pointer-events: none;
 }
+
 
 #goPrevYear,
 #goNextYear {
@@ -495,6 +530,67 @@ span.status-bad ~ #timeNowTimer .flex-column span:first-child {
     font-size: 1rem;
   }
 }
+.table-style-item,#goodDays{
+  border-radius: 10px;
+}
+.table-style-item{
+  margin-top: 10px;
+  padding: 5px;
+}
+
+.table-style-type{
+background-color: none;
+font-size: 20px;
+font-weight: 700;
+}
+.table-style-grid{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; 
+  gap: 6px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: #f7f7f7;
+  transition: all .25s ease;
+  margin: 10px;
+}
+
+
+.table-style-grid small{
+  color: #888;
+  font-size: 13px;
+}
+
+.table-style-grid .timer{
+  font-size: 14px;
+  color: #411515;
+}
+
+/* .table-style-item:hover{
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 10px 20px rgba(0,0,0,.08);
+  background-color: #330000;
+} */
+.timer-style{
+    font-size: 14px;
+  color: rgb(184, 27, 27);
+  background: none;
+  padding: none;
+  margin: 0;
+}
+
+.table-style-grid h4{
+  margin:0;
+  font-size:16px;
+}
+
+.table-style-grid i{
+  font-size:22px;
+  color:#888;
+  margin-top: 10px;
+}
+
+
 
 #nowdaysListHeader {
   position: sticky;
@@ -554,9 +650,83 @@ li#nowdaysToday {
 }
 
 #locationsInfo {
-  margin-top: 20px;
+  align-items: center;
+  color: var(--primaryColor) !important;
+  justify-content: center;
+  font-size: 20px !important;
+  background: none !important;
+  margin: 2px;
+}
+.bi{
+  color: #085b0b !important;
+}
+#dayWeek{
+  color: #adb426 !important;
+  justify-content: right !important;
+  font-size: 20px !important;
+  background: none !important;
+  margin: 2px;
+}
+#date{
+  color: #181905 !important;
+  justify-content: right !important;
+  font-size: 15px !important;
+  background: none !important;
+  margin: 2px;
+}
+
+.month-day {
+  width: 100%;
+  max-width: 420px;  
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px;
+  border-radius: 30px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  font-size: 18px;
+  flex-wrap: wrap; 
+  gap: 10px; 
+background-image: var(--color-theme);
+}
+
+.month-text {
+  font-weight: 600;
+  font-size: 1.7rem;
+  color: #c8e7c4 !important;
+}
+
+.month-number {
+  width: 90px;
+  height: 60px;
+  background: none;
+  border: 2px solid #c8e7c4;
+    color: #b2efaa !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  border-radius: 50%;
+  font-size: 1.8rem;
+}
+
+#month-discription {
+  font-size: large;
+  font-weight: 900;
+    color: #aeb352 ;
+    padding: 2px;
+}
+
+.month-day > div {
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: 30px !important;
+  gap: 6px;
+}
+.title-section{
+  color:var(--primaryColor) ;
+  font-weight: 800;
+}
+.btn__modal {
+  color: #65ba9e !important;
 }

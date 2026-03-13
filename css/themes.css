@@ -1,5 +1,5 @@
 body[data-theme_bg="green"] {
-  --color-theme: linear-gradient(135deg, #0b3d2e, #145c41);
+  --color-theme: linear-gradient(135deg, #0a3d2e, #1c654f);
 }
 body[data-theme_bg="silver"] {
   --color-theme: radial-gradient(#6c6d6c, #918f86);
@@ -17,7 +17,7 @@ body[data-theme_bg="brown"] {
   --color-theme: radial-gradient(#8f600e, #6f3f07);
 }
 body[data-theme_bg="purple"] {
-  --color-theme: radial-gradient(#6b047f, #470554);
+  --color-theme: radial-gradient(#0a3d2e, #1c654f);
 }
 body[data-theme_bg="white"] {
   --color-theme: radial-gradient(#f0f0f0, #eeeeee);
@@ -47,14 +47,16 @@ body[data-theme_bg="white"] {
   border-radius: 0.25rem;
   transition: opacity 0.2s ease-in-out;
 }
+
 @media (max-width: 600px) {
   .themes {
     position: fixed;
-    top: 55px;
+    top: 66vh;
     transform: translateX(-50%);
     left: 50%;
   }
 }
+
 .themes-list {
   padding: 0;
   list-style: none;
@@ -126,7 +128,7 @@ li[data-items_bg="brown"] {
   background-image: radial-gradient(#382504, #120107);
 }
 li[data-items_bg="purple"] {
-  background-image: radial-gradient(#6b047f, #470554);
+  background-image: radial-gradient(#0a3d2e, #175b46);
 }
 li[data-items_bg="white"] {
   background-image: radial-gradient(#f0f0f0, #eeeeee);
@@ -189,7 +191,7 @@ button.navbar-toggler[aria-expanded="true"] {
 }
 
 .table-style span.table-style-type {
-  background: #24a295;
+  /* background: #24a295; */
   color: #fff;
 }
 .table-style-item span.table-style-value {
@@ -235,7 +237,7 @@ div#collapsibleNavId,
 #locationsInfo,
 #closestFasting {
   background-image: var(--color-theme) !important;
-  color: #fff !important;
+  color: #0c2506 !important;
 }
 
 @media print {

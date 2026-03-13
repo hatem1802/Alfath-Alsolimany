@@ -3,8 +3,7 @@ import { countries, getCitiesByCountryCode } from "./cities.js";
 import SunCalc from "./suncalc.js";
 
 export const getAddress = async (lat, lng) => {
-  const url = `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json`;
-  const res = await fetch(url);
+const url = `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json&accept-language=ar`;  const res = await fetch(url);
   const data = await res.json();
   return data.address;
 };
@@ -20,8 +19,14 @@ export let storageLocation = {
 
     if (!location.city || !location.country) {
       const address = await getAddress(location.latitude, location.longitude);
-      location.city = address.city
-      location.country = address.country
+location.city =
+  address.city ||
+  address.state ||
+  address.village ||
+  address.municipality ||
+  address.town;
+
+location.country = address.country;
     }
     localStorage.setItem("TM_location", JSON.stringify(location));
   },
