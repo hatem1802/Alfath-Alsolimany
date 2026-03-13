@@ -230,7 +230,7 @@ ul.events.text-center {
 }
 
 #theme {
-  margin-top: 5px;
+  margin-top: 3px;
 }
 
 .navbar-dark .navbar-brand img {
@@ -247,7 +247,7 @@ ul.events.text-center {
 
 @media (max-width: 767px) {
   #theme {
-    margin-top: 5px;
+    margin-top: 3px;
   }
 
   #chooseLocation,
